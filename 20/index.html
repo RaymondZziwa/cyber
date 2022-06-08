@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
+    <style>
+         html,body{
+            margin:0 auto;
+            background: linear-gradient( #f0f0f0, white);
+            background-repeat: no-repeat;
+            background-size: contain;
+            height: 630px;
+            max-width: 980px;
+            overflow-y: hidden;
+            overflow-x: hidden;
+            border: 2px solid black;
+        }
+        p{
+          color:red
+        }
+        #num1,#num2{
+            width: 80px;
+        }
+        #check{
+            margin-top: 20px;
+            height: 50px;
+            cursor: pointer;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+
+        #imgstatus{
+            width:150px;
+           margin-top: 10px;
+           height: 50px;
+        }
+        .imgo{
+            width:110px;
+           height: 30px;
+        }
+        .clicked{
+            display:block
+        }
+        table, th, td {
+          border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+		<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <center>
+      <div style="width: 972px; height: 80px; background: linear-gradient(black, #414339 ); position: absolute; top: 0px; z-index: 50;">
+        <div>
+          <div style="width: 800px; height: 60px; background: linear-gradient(#404037, #231f1e); position: absolute; top: 10px; margin-left: 100px; z-index: 60; border-radius: 50px">
+              <h3 style="color: white; font-weight: bold; font-family: helvetica;font-size:20px">TOPIC 10: REFLECTION</h3><br>
+              <h3 style="color: white;font-size:20px; font-weight: bold; font-family: helvetica; margin-top: 5px; position: absolute; top: 25px; margin-left: 83px;text-align:center">4.3 Completing shapes on a coordinate grid</h3>
+          </div>
+        </div>
+      </div>
+
+      <!--******************Activity banner***************************************************-->
+      <div style="width: 972px; height: 40px; background: linear-gradient(to right, white, #FEDDB2, #FBAB64 ); position: absolute; top: 80px; z-index: 50; border-bottom:  10px solid #EE9A45">
+        <h3 style="color: black; font-size: 20px; font-family: helvetica; font-weight: lighter; z-index: 66; margin-left: 10px;" id="h3">
+</h3>
+      </div>
+      </div>
+    </center>
+           </div>
+	</div>
+
+
+  <div class="row" style="margin-top:120px">
+      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6" >
+        <canvas id="canvas" height="500px" width="980px" style="margin-left:3px;background-image:url(imgs/graph.png);background-size:contain;background-repeat:no-repeat;"  onclick=" getPosition(event)">
+
+        </canvas>
+            <!-- <canvas id="canvas" style="margin-left:3px;height:510px;width: 480px;background-image:url(imgs/graph.gif);background-size:contain;background-repeat:no-repeat;background-color:blue" onclick="getPosition(event)">
+
+            </canvas> -->
+      </div>
+      <div class="col-sm-12 col-md-5 col-lg-5 col-xl-5.5" style="margin-left:5px;height:510px;font-size:20px;width:480px">
+          <span>
+              <h4>Plot the points below</h4>
+              <span id="qtn"><img src="imgs/1.png" id="pts"/></span>
+          </span><br />
+          The Polygon formed is <input type="text" style="border: none;background-color:#FBAB64;border-radius:50px;width:100px;text-align:center" id="f1"/> with <input type="number" style="border: none;background-color:#FBAB64;width:50px;border-radius:50px;text-align:center" id="f2"/> sides.
+          <button id="draw" style="padding: 10px; color: white; font-family: helvetica; font-weight: bold; font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-left: 5px;margin-top: 10px;width: 100px;" onclick="draw()">Draw</button>
+          <span id="status"></span><br />
+          <button id="reset_btn" style="padding: 10px; color: white; font-family: helvetica; font-weight: bold; font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-left: 5px;margin-top: 10px;width: 100px;" onclick="reset()">Reset</button>
+          <button id="prev_btn" style="padding: 10px; color: white; font-family: helvetica; font-weight: bold; font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 20px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-left: 5px;margin-top: 10px;width: 100px;text-align: center;" onclick="previous()">Back</button>
+          <button id="next_btn" style="padding: 10px; color: white; font-family: helvetica; font-weight: bold; font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-left: 5px;margin-top: 10px;width: 100px;" onclick="next()">Next</button>
+          <button id="check_btn" style="padding: 10px; color: white; font-family: helvetica; font-weight: bold; font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-left: 5px;margin-top: 10px;width: 100px;visibility:hidden" onclick="check()">Check</button>
+
+
+      </div>
+  </div>
+
+
+
+    <div class="row">
+<!-- -
+      <button id="reset_btn" style="float:right;padding: 10px; color: white; font-family: helvetica; font-weight: bold; font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-left: 80px;margin-top: 10px;width: 100px;" onclick="reset()">Reset</button>
+      <button id="check_btn" style="float:right;padding: 10px; color: white; font-family: helvetica; font-weight: bold; font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-left: 100px;margin-top: 10px;width: 100px;display: none;" onclick="check()">Check</button>
+      <!-- <button id="prev_btn" style="padding: 10px; color: white; font-family: helvetica; font-weight: bold; font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-left: 50px;margin-top: 10px;width: 150px;" onclick="previous()">Previous</button>
+      <button id="next_btn" style="padding: 10px; color: white; font-family: helvetica; font-weight: bold; font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-left: 50px;margin-top: 10px;width: 100px;" onclick="next()">Next</button> -->
+  </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(function(){
+        var j=0, text;
+      text = "Plot and join the points  on the graph and answer the questions that follow";
+
+      function typing(){
+        if (j < text.length){
+          document.getElementById("h3").innerHTML += text.charAt(j);
+          j++;
+          setTimeout(typing, 40);
+
+        }
+        $("#point1").fadeIn();
+        $("Points").fadeIn();
+
+      }
+      typing();
+      });
+    </script>
+</body>
+</html>
