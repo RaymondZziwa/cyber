@@ -41,14 +41,27 @@
            height: 50px;
         }
         .imgo{
-            width:110px;
+            width:100px;
            height: 30px;
         }
         .clicked{
             display:block
         }
-        table, th, td {
+         table, th, td {
           border: 1px solid black;
+        }
+        button{
+            height: 40px;
+           padding: 10px; color: white; font-family: helvetica; font-weight: bold; font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-left: 5px;margin-top: 10px;width: 120px;
+        }
+        button:hover{
+            background-image: -moz-none;
+            background-image: -webkit-none;
+            background-image: -webkit-none;
+            background-image: -o-none;
+            background-image:none;
+            background-color: red;
+            transition: 0.5s;
         }
     </style>
 </head>
@@ -78,24 +91,55 @@
 
   <div class="row" style="margin-top:130px">
       <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6" style="margin-left:10px;background-image:url(imgs/graph.png);background-size:contain;background-repeat:no-repeat;padding-left:10px">
+          <div style="margin-top:350px;font-size: 17px;"> 
+              1.Who  is the tallest learner?
+              <input type="text" style="border: none;background-color:#FBAB64;border-radius:50px;width:80px;text-align:center" id="f1"/><span id="status1"></span><br />
+               <button id="reset_btn" onclick="reset()">Reset</button>
+                <button id="check_btn" style="visibility:hidden" onclick="check()">Check</button>
+
+          </div>
       </div>
-      <div class="col-sm-12 col-md-5 col-lg-5 col-xl-5" style="margin-left:5px;height:510px;font-size:20px;width:460px">
-          1.Who  is the tallest learner?<br />
-          <input type="text" style="border: none;background-color:#FBAB64;border-radius:50px;width:100px;text-align:center" id="f1"/><span id="status1"></span><br />
+
+      <div class="col-sm-12 col-md-5 col-lg-5 col-xl-5" style="margin-left:5px;height:510px;font-size:17px;width:460px;margin-top: 5px">
+         
           2.Who  are the leaners with;<br />
             i)the same mass?<br />
-            <input type="text" style="border: none;background-color:#FBAB64;border-radius:50px;width:200px;text-align:center" id="f2"/><span id="status2"></span><br />
+            <table>
+              <tr>
+                <td><input type="text" style="border: none;background-color:#FBAB64;height:20px;width: 80px;text-align: center;" id="t1" /></td>
+                <td><input type="text" style="border: none;background-color:#FBAB64;height:20px;width: 80px;text-align: center;" id="t2"/></td>
+              </tr>
+              <tr>
+                <td><input type="text" style="border: none;background-color:#FBAB64;height:20px;width: 80px;text-align: center;" id="t3"/></td>
+                <td><input type="text" style="border: none;background-color:#FBAB64;height:20px;width: 80px;text-align: center;" id="t4"/></td>
+              </tr>
+              <tr>
+                <td><input type="text" style="border: none;background-color:#FBAB64;height:20px;width: 80px;text-align: center;" id="t5"/></td>
+                <td><input type="text" style="border: none;background-color:#FBAB64;height:20px;width: 80px;text-align: center;" id="t6"/></td>
+              </tr>
+            </table>
             ii)the same height?<br />
-          <input type="text" style="border: none;background-color:#FBAB64;border-radius:50px;width:200px;text-align:center" id="f3"/><span id="status3"></span><br />
+              <table>
+              <tr>
+                <td><input type="text" style="border: none;background-color:#FBAB64;height:20px;width: 80px;text-align: center;" id="t7" /></td>
+                <td><input type="text" style="border: none;background-color:#FBAB64;height:20px;width: 80px;text-align: center;" id="t8"/></td>
+              </tr>
+              <tr>
+                <td><input type="text" style="border: none;background-color:#FBAB64;height:20px;width: 80px;text-align: center;" id="t9"/></td>
+                <td><input type="text" style="border: none;background-color:#FBAB64;height:20px;width: 80px;text-align: center;" id="t10"/></td>
+              </tr>
+              <tr>
+                <td><input type="text" style="border: none;background-color:#FBAB64;height:20px;width: 80px;text-align: center;" id="t11"/></td>
+                <td><input type="text" style="border: none;background-color:#FBAB64;height:20px;width: 80px;text-align: center;" id="t12"/></td>
+              </tr>
+            </table>
           3.How much taller is;<br />
             i)Mary than Musa?<input type="text" style="border: none;background-color:#FBAB64;border-radius:50px;width:100px;text-align:center;margin-top:5px" id="f4"/><span id="status4"></span><br />
             ii)Joan than Mary?<input type="text" style="border: none;background-color:#FBAB64;border-radius:50px;width:100px;text-align:center;margin-top:5px" id="f5"/><span id="status5"></span><br />
             iii)Sarah than John?<input type="text" style="border: none;background-color:#FBAB64;border-radius:50px;width:100px;text-align:center;margin-top:5px" id="f6"/><span id="status6"></span><br />
             iv)Ibrah than Joy?<input type="text" style="border: none;background-color:#FBAB64;border-radius:50px;width:100px;text-align:center;margin-top:5px" id="f7"/><span id="status7"></span><br />
             v)John than David?<input type="text" style="border: none;background-color:#FBAB64;border-radius:50px;width:100px;text-align:center;margin-top:5px" id="f8"/><span id="status8"></span><br />
-          <button id="reset_btn" style="padding: 10px; color: white; font-family: helvetica; font-weight: bold; font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-left: 5px;margin-top: 10px;width: 100px;" onclick="reset()">Reset</button>
-          <button id="check_btn" style="padding: 10px; color: white; font-family: helvetica; font-weight: bold; font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-left: 5px;margin-top: 10px;width: 100px;visibility:hidden" onclick="check()">Check</button>
-
+         
 
       </div>
   </div>
@@ -123,7 +167,7 @@
         if (j < text.length){
           document.getElementById("h3").innerHTML += text.charAt(j);
           j++;
-          setTimeout(typing, 40);
+          setTimeout(typing, 30);
 
         }
         $("#point1").fadeIn();

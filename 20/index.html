@@ -53,6 +53,19 @@
         table, th, td {
           border: 1px solid black;
         }
+         button{
+            height: 40px;
+           padding: 10px; color: white; font-family: helvetica; font-weight: bold; font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-left: 5px;margin-top: 10px;width: 120px;
+        }
+        button:hover{
+            background-image: -moz-none;
+            background-image: -webkit-none;
+            background-image: -webkit-none;
+            background-image: -o-none;
+            background-image:none;
+            background-color: red;
+            transition: 0.5s;
+        }
     </style>
 </head>
 <body>
@@ -94,12 +107,12 @@
               <span id="qtn"><img src="imgs/1.png" id="pts"/></span>
           </span><br />
           The Polygon formed is <input type="text" style="border: none;background-color:#FBAB64;border-radius:50px;width:100px;text-align:center" id="f1"/> with <input type="number" style="border: none;background-color:#FBAB64;width:50px;border-radius:50px;text-align:center" id="f2"/> sides.
-          <button id="draw" style="padding: 10px; color: white; font-family: helvetica; font-weight: bold; font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-left: 5px;margin-top: 10px;width: 100px;" onclick="draw()">Draw</button>
+          <button id="draw" onclick="draw()">Draw</button>
           <span id="status"></span><br />
-          <button id="reset_btn" style="padding: 10px; color: white; font-family: helvetica; font-weight: bold; font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-left: 5px;margin-top: 10px;width: 100px;" onclick="reset()">Reset</button>
-          <button id="prev_btn" style="padding: 10px; color: white; font-family: helvetica; font-weight: bold; font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 20px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-left: 5px;margin-top: 10px;width: 100px;text-align: center;" onclick="previous()">Back</button>
-          <button id="next_btn" style="padding: 10px; color: white; font-family: helvetica; font-weight: bold; font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-left: 5px;margin-top: 10px;width: 100px;" onclick="next()">Next</button>
-          <button id="check_btn" style="padding: 10px; color: white; font-family: helvetica; font-weight: bold; font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-left: 5px;margin-top: 10px;width: 100px;visibility:hidden" onclick="check()">Check</button>
+          <button id="reset_btn" onclick="reset()">Reset</button>
+          <button id="prev_btn" onclick="previous()">Back</button>
+          <button id="next_btn" onclick="next()">Next</button>
+          <button id="check_btn" style="visibility:hidden" onclick="check()">Check</button>
 
 
       </div>
@@ -128,7 +141,7 @@
         if (j < text.length){
           document.getElementById("h3").innerHTML += text.charAt(j);
           j++;
-          setTimeout(typing, 40);
+          setTimeout(typing, 30);
 
         }
         $("#point1").fadeIn();
