@@ -63,7 +63,21 @@
           margin-left: 5px;
            left: calc(50% - 390px);
            top: 50px;
-           cursor: crosshair;
+           cursor: url('imgs/pencil.png') 0 100, auto;
+        }
+         button{
+            height: 40px;
+            width: 120px;
+            padding: 10px; color: white; font-family: helvetica; font-weight: bold; font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-left: 5px;margin-top: 10px;
+        }
+        button:hover{
+            background-image: -moz-none;
+            background-image: -webkit-none;
+            background-image: -webkit-none;
+            background-image: -o-none;
+            background-image:none;
+            background-color: red;
+            transition: 0.5s;
         }
     </style>
 </head>
@@ -95,20 +109,19 @@
     <div class="row" style="margin-top: 150px;padding:5px">
         <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
             <h4>Distance Conversion</h4>
-            So, we are given 1cm = 10km
-            Then: 120km = 120/10 = 12cm
+            So, 1cm = 10km<br>
+            Then: 120km = 120/10 = 12cm<br>
             Also: 95km = 95/10 = 9.5cm
                 <br>
             a) How far is the aircraft from the starting point?<br>
             <input type="text" id="ans1" style="border: none;background-color:#FBAB64;border-radius: 80px;width: 100px;text-align: center;"><span id="status1"></span><br>
-            b) What is the bearing of the air craft from the starting point?<br><input type="text" id="ans2" style="border: none;background-color:#FBAB64;border-radius: 80px;width: 100px;text-align: center;"><span id="status2"></span>
-            <div class="row"  style="margin-top: 0px;">
-                <button id="reset_btn" style="float:right;padding: 10px; color: white; font-family: helvetica; font-weight: bold; font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-left: 15px;margin-top: 10px;width: 100px;" onclick="reset()">Reset</button>
-                 <button  style="float:right;padding: 10px; color: white; font-family: helvetica;margin-right: 5px;border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-top: 10px;width: 150px;margin-left: 5px;" id="turn">Turn Ruler</button>
-                 <button  style="float:right;padding: 10px; color: white; font-family: helvetica;margin-right: 5px;border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-top: 10px;width: 180px;margin-left: 15px;" id="turnp">Turn Protractor</button>
+            b) What is the bearing of the air craft from the starting point?<br><input type="text" id="ans2" style="border: none;background-color:#FBAB64;border-radius: 80px;width: 100px;text-align: center;"><span id="status2"></span><br>
+            <button id="reset_btn"  onclick="reset()">Reset</button><br>
+            <button   id="turn" style="width: 150px;">Turn Ruler</button>
                 
-                <button id="check_btn" style="float:right;padding: 10px; color: white; font-family: helvetica; font-weight: bold; font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-left: 5px;margin-top: 10px;width: 100px;display: none;" onclick="check()">Check</button>
-                </div>
+                 
+                 <button  id="turnp" style="width: 180px;">Turn Protractor</button>
+                <button id="check_btn" style="display: none;" onclick="check()">Check</button>
             </div>
         <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
             <img src="imgs/1.png" height="380px" width="380px" style="margin-left: 100px;display: none;" id="correctbearingimg">
@@ -122,36 +135,6 @@
     </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- <div class="row">
-        
-      <button id="reset_btn" style="float:right;padding: 10px; color: white; font-family: helvetica; font-weight: bold; font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-left: 80px;margin-top: 10px;width: 100px;" onclick="reset()">Reset</button>
-      <button id="check_btn" style="float:right;padding: 10px; color: white; font-family: helvetica; font-weight: bold; font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-left: 100px;margin-top: 10px;width: 100px;display: none;" onclick="check()">Check</button>
-      < <button id="prev_btn" style="padding: 10px; color: white; font-family: helvetica; font-weight: bold; font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-left: 50px;margin-top: 10px;width: 150px;" onclick="previous()">Previous</button>
-      <button id="next_btn" style="padding: 10px; color: white; font-family: helvetica; font-weight: bold; font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-left: 50px;margin-top: 10px;width: 100px;" onclick="next()">Next</button> -->
   </div>
 
     <script src="script.js"></script>
@@ -161,13 +144,13 @@
     <script>
       $(function(){
         var j=0, text;
-      text = "An aircraft travels 120 km on a bearing of 0620° and then 95km on a bearing of 305°. Using the instruments provided draw an accurate diagram(use a scale 1cm = 10km) and use it to determine the following;";
+      text = "An aircraft travels 120 km on a bearing of 062° and then 95km on a bearing of 305°. Using the instruments provided draw an accurate diagram(use a scale 1cm = 10km) and use it to determine the following;";
 
       function typing(){
         if (j < text.length){
           document.getElementById("h3").innerHTML += text.charAt(j);
           j++;
-          setTimeout(typing, 40);
+          setTimeout(typing, 30);
         
         }
         $("#point1").fadeIn();

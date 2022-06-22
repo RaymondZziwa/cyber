@@ -386,7 +386,7 @@ document.getElementById('turn').addEventListener('click',()=>{
      }
 
 
-     if(document.getElementById("f22").value == "Divides the shape into 2"){
+     if(document.getElementById("f22").value == "Divides the shape into 2 equal parts" || document.getElementById("f22").value == "divides the shape into 2 equal parts"){
           const img = document.createElement('img') // create img element on the fly
               img.src = 'imgs/Activity-9_0000s_0004s_0000s_0000_excellent.png' //assign source to new img element
               img.classList.add("imgo");//add styling class
@@ -430,7 +430,7 @@ document.getElementById('turn').addEventListener('click',()=>{
   }
   const display_check = () =>{
       if(document.getElementById("f1").value != "" && document.getElementById("f2").value != "" && document.getElementById("f3").value != "" && document.getElementById("f4").value != "" && document.getElementById("f22").value != ""){
-          document.getElementById("check_btn").style.display="block"
+          document.getElementById("check_btn").style.display="inline-block"
      }else{
           document.getElementById("check_btn").style.display="none"
       }
@@ -450,43 +450,66 @@ document.getElementById('turn').addEventListener('click',()=>{
 // }
 
 
-var canvas;
-var context;
-var  isDrawing;
-window.onload = function() {
-   canvas = document.getElementById('canvas');
-   context = canvas.getContext('2d');
-   canvas.width = 500;
-   canvas.height = 300;
-   context.strokeStyle = "black";
-   context.lineWidth = 2;
-   
-   canvas.onmousedown = startDrawing;
-   canvas.onmouseup = stopDrawing;
-   canvas.onmousemove = draw;
-   
-   function startDrawing(e) {
-      isDrawing = true;
-      context.beginPath();
-      context.moveTo(e.pageX - canvas.offsetLeft, e.pageY - canvas.offsetTop);
-   }
-   
-   function draw(e) {
-      if (isDrawing == true) {
-         var x = e.pageX - canvas.offsetLeft;
-         var y = e.pageY - canvas.offsetTop;
-      
-         context.lineTo(x, y);
-         context.stroke();
-      }
-   }
-   
-   function stopDrawing() {
-      isDrawing = false;
-   }
-   
-   /*var coord = document.getElementById("coord");
-   canvas.onmousemove = function(e) {
-      coord.value = e.pageX+" "+e.pageY+" / "+(e.pageX-canvas.offsetLeft)+" "+(e.pageY-canvas.offsetTop);
-   }*/
+let oldX = null;
+let oldY = null;
+let moveX = null;
+let moveY = null;
+let pX = null;
+let pY = null;
+let can_mouse_event = false;
+let storedLines = [];
+
+const can = document.getElementById("canvas");
+const ctx = can.getContext("2d");
+
+can.onmousedown = function(e){
+    oldX = e.offsetX;
+    oldY = e.offsetY;
+    can_mouse_event = true;
+};
+
+can.onmousemove = function(e){
+    if(can_mouse_event == true){
+        Redraw();
+        moveX = e.offsetX;
+        moveY = e.offsetY;
+        ctx.strokeStyle = "#000";
+        ctx.lineWidth = 1;
+        ctx.lineJoin  = "round";
+        ctx.lineCap   = "round";
+        ctx.beginPath();
+        ctx.moveTo(oldX,oldY);
+        ctx.lineTo(moveX,moveY);
+        ctx.stroke();
+    }
+};
+
+function Redraw(){
+    ctx.clearRect(0,0,can.width,can.height);
+    if(storedLines.length == 0){
+        return;
+    }
+    for(let i = 0; i<storedLines.length; i++){
+        ctx.beginPath();
+        ctx.moveTo(storedLines[i].x1, storedLines[i].y1);
+        ctx.lineTo(storedLines[i].x2, storedLines[i].y2);
+        ctx.stroke();
+    }
 }
+
+can.onmouseup = function(e){
+    can_mouse_event = false;
+    pX = e.offsetX;
+    pY = e.offsetY;
+    storedLines.push({
+        x1:oldX,
+        y1:oldY,
+        x2:pX,
+        y2:pY
+    })
+};
+
+can.onmouseout = function(){
+    can_mouse_event = false;
+};
+

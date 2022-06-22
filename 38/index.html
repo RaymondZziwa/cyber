@@ -28,8 +28,22 @@
         #canvas {
           margin: 0 auto;
            left: calc(50% - 390px);
-           top: 50px;
-           cursor: crosshair;
+           top: 90px;
+           cursor: url('imgs/pencil.png') 0 100, auto;
+        }
+         button{
+            height: 40px;
+            width: 120px;
+            padding: 10px; color: white; font-family: helvetica; font-weight: bold; font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-left: 5px;margin-top: 5px;
+        }
+        button:hover{
+            background-image: -moz-none;
+            background-image: -webkit-none;
+            background-image: -webkit-none;
+            background-image: -o-none;
+            background-image:none;
+            background-color: red;
+            transition: 0.5s;
         }
     </style>
 </head>
@@ -59,12 +73,9 @@
 
     <div class="row" style="margin-top:80px;" id="init">
         <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-            <canvas id="canvas">
+            <canvas id="canvas" height="400px" width="450px">
 
             </canvas>
-            <img src="imgs/rulerstraight.png"  width="800px" id="ruler" style="cursor:grab">
-            
-          
 
             <img src="imgs/A.png" id="A" height="30px"/>
             <img src="imgs/B.png" id="B" height="30px"/>
@@ -75,12 +86,15 @@
             <img src="imgs/X.png" id="X" height="30px"/>
             <img src="imgs/Y.png" id="Y" height="30px"/>
             <div class="row" style="margin-top-50px">
-      <button id="reset_btn" style="padding: 10px; color: white; font-family: helvetica; font-weight: bold; font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-left: 15px;margin-top: 2px;width: 100px;" onclick="reset()">Reset</button>
-      <button  style="float:right;padding: 10px; color: white; font-family: helvetica;margin-right: 5px;font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-top: 2px;width: 150px;margin-left: 5px;" id="turn">Turn Ruler</button>
-      <button id="prev_btn" style="padding: 10px; color: white; font-family: helvetica; font-weight: bold; font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-left: 5px;margin-top: 2px;width: 100px;" onclick="previous()">Back</button>
-      <button id="next_btn" style="padding: 10px; color: white; font-family: helvetica; font-weight: bold; font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-left: 5px;margin-top: 2px;width: 100px;" onclick="next()">Next</button>
-       <button id="check_btn" style="float:right;padding: 10px; color: white; font-family: helvetica; font-weight: bold; font-size: 15px; border-radius: 30px; padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; background:linear-gradient(red, maroon, black); cursor: pointer; margin-left: 15px;margin-top: 2px;width: 100px;display: none;" onclick="check()">Check</button>
-  </div>
+                  <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <button id="reset_btn"  onclick="reset()">Reset</button>
+                        <button  id="turn" style="width:150px">Turn Ruler</button>
+                        <button id="prev_btn"  onclick="previous()">Back</button>
+                        <button id="next_btn"  onclick="next()">Next</button>
+                         <button id="check_btn" style="display: none;" onclick="check()">Check</button>
+       <img src="imgs/rulerstraight.png"  width="600px" id="ruler" style="cursor:grab">
+                  </div>
+            </div>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6" style="margin-top: 80px;padding-left: 5px;font-size: 17px;">
             Draw a rectangle ABCD.<br />
@@ -112,13 +126,13 @@
     <script>
       $(function(){
         var j=0, text;
-      text = "Use the ruler provided to mark and draw a rectangle(ABCD) with length of 4cm and width of 2cm as instructed and answer questions that follow correctly";
+      text = "Draw a rectangle ABCD (Drag and drop the respective letters onto the rectangle vertices) with length of 4cm and width of 2cm as instructed and answer questions that follow correctly";
 
       function typing(){
         if (j < text.length){
           document.getElementById("h3").innerHTML += text.charAt(j);
           j++;
-          setTimeout(typing, 40);
+          setTimeout(typing, 30);
 
         }
         $("#point1").fadeIn();
